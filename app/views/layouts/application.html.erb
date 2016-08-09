@@ -9,6 +9,31 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul class="nav nav-tabs uppercase">
+          <li><%= link_to "inicio",root_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "ingresar", new_user_session_path %></li>
+            <li><%= link_to "registrarse", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <div class="alert alert-success" style="<%= 'display:none' if notice.nil? %>">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= notice %>
+    </div>
+    <div class="alert alert-warning" style="<%= 'display:none' if alert.nil? %>">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= alert %>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -1,1 +1,9 @@
-@import 'bootstarp'
+@import 'bootstrap';
+
+.no-float {
+  float: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
